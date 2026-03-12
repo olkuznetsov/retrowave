@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="20" y="55" width="160" height="95" rx="10" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Disc lid -->
+  <rect x="35" y="65" width="100" height="50" rx="6" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <ellipse cx="85" cy="90" rx="38" ry="20" fill="#0a1628" stroke="#6ecbf5" stroke-width="1"/>
+  <circle cx="85" cy="90" r="8" fill="#00d4ff" opacity="0.3" filter="url(#glow)"/>
+  <!-- Power/reset -->
+  <circle cx="155" cy="78" r="7" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <circle cx="155" cy="98" r="5" fill="#6ecbf5" opacity="0.7"/>
+  <!-- Controller ports -->
+  <rect x="25" y="128" width="22" height="14" rx="3" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <rect x="55" y="128" width="22" height="14" rx="3" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="100" y="175" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">SATURN</text>
+</svg>

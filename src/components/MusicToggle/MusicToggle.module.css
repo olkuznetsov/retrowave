@@ -1,0 +1,62 @@
+.container {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.toggleBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--panel-border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+  box-shadow: var(--panel-glow);
+}
+
+.toggleBtn:hover {
+  border-color: var(--ffx-glow);
+  color: var(--ffx-glow);
+  box-shadow: var(--panel-glow-strong);
+}
+
+.toggleBtn.playing {
+  color: var(--ffx-glow);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.volumeSlider {
+  width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--ffx-ocean);
+  border-radius: 2px;
+  outline: none;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.volumeSlider:hover {
+  opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ffx-glow);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--ffx-glow);
+}

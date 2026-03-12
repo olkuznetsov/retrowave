@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="redglow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="20" y="50" width="160" height="105" rx="8" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Large cartridge slot -->
+  <rect x="40" y="60" width="120" height="40" rx="5" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- Neo Geo red stripe - iconic -->
+  <rect x="20" y="105" width="160" height="12" fill="#cc0000" opacity="0.8" filter="url(#redglow)"/>
+  <!-- Power LED -->
+  <circle cx="160" cy="130" r="6" fill="#00d4ff" filter="url(#glow)"/>
+  <!-- Controller ports -->
+  <rect x="28" y="128" width="26" height="18" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <rect x="60" y="128" width="26" height="18" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="100" y="178" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">NEO GEO</text>
+</svg>

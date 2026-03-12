@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <path d="M55 15 L145 15 L145 155 Q145 185 100 185 Q55 185 55 155 Z" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <rect x="66" y="28" width="68" height="55" rx="5" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="70" y="32" width="60" height="47" rx="3" fill="#0d3020" stroke="#00d4ff" stroke-width="1"/>
+  <rect x="72" y="34" width="56" height="43" rx="2" fill="#00d4ff" opacity="0.08"/>
+  <circle cx="72" cy="97" r="4" fill="#00ff88" filter="url(#glow)"/>
+  <rect x="63" y="105" width="28" height="8" rx="2" fill="#6ecbf5" opacity="0.8"/>
+  <rect x="72" y="97" width="8" height="25" rx="2" fill="#6ecbf5" opacity="0.8"/>
+  <circle cx="128" cy="113" r="8" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <circle cx="114" cy="119" r="8" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <rect x="76" y="139" width="16" height="5" rx="2" fill="#6ecbf5" opacity="0.6"/>
+  <rect x="100" y="139" width="16" height="5" rx="2" fill="#6ecbf5" opacity="0.6"/>
+  <text x="100" y="197" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">GBC</text>
+</svg>

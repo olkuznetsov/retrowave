@@ -1,0 +1,57 @@
+/* ============================================
+   RetroWave — Final Fantasy X Inspired Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;700&display=swap');
+
+:root {
+  /* ── FFX Blues ── */
+  --ffx-deep:       #0a1628;
+  --ffx-ocean:      #0d2847;
+  --ffx-mid-blue:   #1a4a7a;
+  --ffx-teal:       #4e818e;
+  --ffx-sky:        #5499b5;
+  --ffx-light:      #9fc8f2;
+  --ffx-ice:        #cedade;
+  --ffx-glow:       #6ecbf5;
+  --ffx-aqua:       #00d4ff;
+  --ffx-purple:     #3a2d6e;
+
+  /* ── Transparency Panels ── */
+  --panel-bg:       rgba(10, 22, 40, 0.75);
+  --panel-bg-light: rgba(10, 22, 40, 0.5);
+  --panel-border:   rgba(110, 203, 245, 0.3);
+  --panel-glow:     0 0 20px rgba(110, 203, 245, 0.15);
+  --panel-glow-strong: 0 0 40px rgba(110, 203, 245, 0.25);
+
+  /* ── Text Colors ── */
+  --text-primary:   #e8f4fd;
+  --text-secondary: #9fc8f2;
+  --text-muted:     rgba(206, 218, 222, 0.6);
+  --text-glow:      0 0 10px rgba(110, 203, 245, 0.5);
+
+  /* ── Typography ── */
+  --font-heading:   'Rajdhani', 'Orbitron', sans-serif;
+  --font-body:      'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-accent:    'Orbitron', 'Rajdhani', sans-serif;
+
+  /* ── Spacing ── */
+  --space-xs:       4px;
+  --space-sm:       8px;
+  --space-md:       16px;
+  --space-lg:       24px;
+  --space-xl:       32px;
+  --space-2xl:      48px;
+  --space-3xl:      64px;
+
+  /* ── Border Radius ── */
+  --radius-sm:      6px;
+  --radius-md:      12px;
+  --radius-lg:      20px;
+  --radius-xl:      30px;
+
+  /* ── Transitions ── */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow:   0.5s ease-in-out;
+}

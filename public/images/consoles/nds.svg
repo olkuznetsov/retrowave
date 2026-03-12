@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <!-- Top half (hinge open) -->
+  <rect x="35" y="15" width="130" height="80" rx="10" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Top screen -->
+  <rect x="48" y="24" width="104" height="60" rx="4" fill="#0d2a1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="51" y="27" width="98" height="54" rx="2" fill="#00d4ff" opacity="0.07"/>
+  <!-- Hinge -->
+  <rect x="35" y="93" width="130" height="8" rx="4" fill="#0d1e36" stroke="#6ecbf5" stroke-width="1.5"/>
+  <!-- Bottom half -->
+  <rect x="35" y="99" width="130" height="88" rx="10" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Touch screen -->
+  <rect x="52" y="108" width="96" height="58" rx="3" fill="#0d2a1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- D-pad -->
+  <rect x="42" y="135" width="22" height="7" rx="2" fill="#6ecbf5" opacity="0.7"/>
+  <rect x="48" y="128" width="7" height="22" rx="2" fill="#6ecbf5" opacity="0.7"/>
+  <!-- ABXY -->
+  <circle cx="158" cy="136" r="5" fill="#6ecbf5" opacity="0.8"/>
+  <circle cx="148" cy="130" r="5" fill="#00d4ff" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="148" cy="142" r="5" fill="#6ecbf5" opacity="0.8"/>
+  <circle cx="138" cy="136" r="5" fill="#6ecbf5" opacity="0.8"/>
+  <text x="100" y="198" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">NDS</text>
+</svg>

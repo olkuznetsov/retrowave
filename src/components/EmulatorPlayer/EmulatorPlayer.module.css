@@ -1,0 +1,82 @@
+.playerContainer {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.exitBtn {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 310;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-normal);
+  opacity: 0.5;
+}
+
+.exitBtn:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.titleBar {
+  position: absolute;
+  top: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 310;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 6px 16px;
+  opacity: 0.5;
+  transition: opacity var(--transition-normal);
+}
+
+.titleBar:hover {
+  opacity: 1;
+}
+
+.gameName {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+}
+
+.consoleBadge {
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  color: var(--ffx-glow);
+  background: rgba(110, 203, 245, 0.15);
+  border-radius: var(--radius-xl);
+  padding: 2px 8px;
+  letter-spacing: 1px;
+}
+
+.iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #000;
+}
