@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="20" y="65" width="160" height="80" rx="8" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- HuCard slot - distinctive long slot on top -->
+  <rect x="50" y="50" width="100" height="20" rx="3" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- TurboGrafx bump -->
+  <ellipse cx="100" cy="68" rx="30" ry="8" fill="#0d1e36" stroke="#6ecbf5" stroke-width="1"/>
+  <!-- Power LED -->
+  <circle cx="158" cy="88" r="5" fill="#00d4ff" filter="url(#glow)"/>
+  <!-- Controller port - single port (unusual!) -->
+  <rect x="70" y="118" width="28" height="16" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <!-- Run/Select -->
+  <rect x="108" y="125" width="14" height="5" rx="2" fill="#6ecbf5" opacity="0.6"/>
+  <rect x="126" y="125" width="14" height="5" rx="2" fill="#6ecbf5" opacity="0.6"/>
+  <text x="100" y="175" text-anchor="middle" font-family="monospace" font-size="10" fill="#6ecbf5" opacity="0.8">TURBOGRAFX</text>
+</svg>

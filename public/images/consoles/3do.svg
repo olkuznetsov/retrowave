@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="30" y="45" width="140" height="120" rx="12" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- CD door (front-loading) -->
+  <rect x="45" y="65" width="110" height="45" rx="6" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="60" y="72" width="80" height="31" rx="4" fill="#0a1628"/>
+  <!-- Disc visible -->
+  <circle cx="100" cy="88" r="12" fill="none" stroke="#6ecbf5" stroke-width="1" opacity="0.5"/>
+  <circle cx="100" cy="88" r="5" fill="#00d4ff" opacity="0.3" filter="url(#glow)"/>
+  <!-- 3DO logo badge -->
+  <circle cx="55" cy="128" r="12" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <text x="55" y="133" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00d4ff">3DO</text>
+  <!-- Power -->
+  <circle cx="155" cy="120" r="8" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <!-- Controller port -->
+  <rect x="85" y="140" width="30" height="16" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="100" y="183" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">3DO</text>
+</svg>

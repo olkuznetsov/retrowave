@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RetroWave Player</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; overflow: hidden; }
+    #game { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    // EmulatorJS configuration
+    EJS_player = '#game';
+    EJS_core = params.get('core') || 'fceumm';
+    EJS_gameUrl = params.get('rom') || '';
+    EJS_gameName = params.get('name') || 'Game';
+    EJS_color = '#1a4a7a';
+    EJS_startOnLoaded = true;
+
+    // EmulatorJS v4.2.3 hosted on Cloudflare R2
+    EJS_pathtodata = 'https://pub-44598954bf774754af38263b7890873b.r2.dev/emulatorjs/';
+
+    // Optional BIOS
+    if (params.get('bios')) {
+      EJS_biosUrl = params.get('bios');
+    }
+
+    // Save state callback — send to parent window
+    EJS_onSaveState = function(state) {
+      try {
+        window.parent.postMessage({
+          type: 'save-state',
+          data: state,
+        }, '*');
+      } catch (e) {
+        console.warn('Could not send save state to parent:', e);
+      }
+    };
+
+    // Game save update callback
+    EJS_onSaveUpdate = function(save) {
+      try {
+        window.parent.postMessage({
+          type: 'save-update',
+          data: save,
+        }, '*');
+      } catch (e) {
+        console.warn('Could not send save update to parent:', e);
+      }
+    };
+  </script>
+  <script src="https://pub-44598954bf774754af38263b7890873b.r2.dev/emulatorjs/loader.js"></script>
+</body>
+</html>

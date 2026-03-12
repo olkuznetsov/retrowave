@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <!-- Genesis on top -->
+  <rect x="15" y="45" width="170" height="55" rx="6" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Cartridge slot -->
+  <rect x="60" y="32" width="80" height="18" rx="3" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- Sega CD addon below -->
+  <rect x="25" y="100" width="150" height="60" rx="8" fill="#0d1e36" stroke="#00d4ff" stroke-width="2" filter="url(#glow)"/>
+  <!-- CD tray -->
+  <ellipse cx="100" cy="125" rx="40" ry="22" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <circle cx="100" cy="125" r="10" fill="#00d4ff" opacity="0.3" filter="url(#glow)"/>
+  <!-- Power LED -->
+  <circle cx="155" cy="112" r="5" fill="#00ff44" filter="url(#glow)"/>
+  <text x="100" y="183" text-anchor="middle" font-family="monospace" font-size="10" fill="#6ecbf5" opacity="0.8">SEGA CD</text>
+</svg>

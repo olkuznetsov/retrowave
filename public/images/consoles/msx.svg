@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <!-- Computer body / keyboard -->
+  <rect x="15" y="70" width="170" height="90" rx="8" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Screen on top portion -->
+  <rect x="30" y="78" width="90" height="55" rx="4" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="33" y="81" width="84" height="49" rx="2" fill="#001a00"/>
+  <!-- Screen scan lines effect -->
+  <rect x="33" y="81" width="84" height="49" rx="2" fill="#00ff44" opacity="0.08"/>
+  <!-- Keyboard keys grid -->
+  <rect x="130" y="82" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="142" y="82" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="154" y="82" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="130" y="92" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="142" y="92" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="154" y="92" width="8" height="6" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <!-- Main keyboard row -->
+  <rect x="22" y="138" width="156" height="8" rx="2" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="25" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="41" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="57" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="73" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="89" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="105" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="121" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="137" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <rect x="153" y="140" width="12" height="4" rx="1" fill="#6ecbf5" opacity="0.5"/>
+  <text x="100" y="183" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">MSX</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <!-- Distinctive V/wave body -->
+  <path d="M25 75 Q25 55 100 50 Q175 55 175 75 L180 155 L20 155 Z" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Cart slot on top -->
+  <rect x="60" y="40" width="80" height="16" rx="3" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- Wave design feature (iconic Jaguar) -->
+  <path d="M30 100 Q50 90 70 100 Q90 110 110 100 Q130 90 150 100 Q165 107 175 100" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.6"/>
+  <!-- Power LED -->
+  <circle cx="155" cy="78" r="6" fill="#ff4400" filter="url(#glow)"/>
+  <!-- Controller ports -->
+  <rect x="35" y="130" width="24" height="16" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <rect x="65" y="130" width="24" height="16" rx="4" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="100" y="183" text-anchor="middle" font-family="monospace" font-size="10" fill="#6ecbf5" opacity="0.8">JAGUAR</text>
+</svg>

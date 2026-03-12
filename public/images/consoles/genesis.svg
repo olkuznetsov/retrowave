@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="15" y="60" width="170" height="85" rx="6" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Cartridge slot on top -->
+  <rect x="60" y="45" width="80" height="22" rx="4" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- Volume slider -->
+  <rect x="25" y="78" width="40" height="6" rx="3" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="38" y="75" width="8" height="12" rx="2" fill="#6ecbf5"/>
+  <!-- Power LED -->
+  <circle cx="155" cy="82" r="5" fill="#ff4444" filter="url(#glow)"/>
+  <!-- Headphone -->
+  <circle cx="170" cy="115" r="7" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <!-- Controller ports -->
+  <rect x="25" y="118" width="22" height="14" rx="3" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <rect x="55" y="118" width="22" height="14" rx="3" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="100" y="175" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">GENESIS</text>
+</svg>

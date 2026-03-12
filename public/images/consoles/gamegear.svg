@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect x="10" y="55" width="180" height="100" rx="18" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Screen -->
+  <rect x="50" y="65" width="100" height="65" rx="5" fill="#0d2a1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <rect x="53" y="68" width="94" height="59" rx="3" fill="#00d4ff" opacity="0.07"/>
+  <!-- D-pad -->
+  <rect x="15" y="92" width="24" height="7" rx="2" fill="#6ecbf5" opacity="0.8"/>
+  <rect x="21" y="86" width="7" height="20" rx="2" fill="#6ecbf5" opacity="0.8"/>
+  <!-- Buttons -->
+  <circle cx="170" cy="93" r="7" fill="#050d1a" stroke="#6ecbf5" stroke-width="1.5"/>
+  <circle cx="158" cy="100" r="7" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <!-- Start -->
+  <rect x="88" y="140" width="24" height="7" rx="3" fill="#6ecbf5" opacity="0.7"/>
+  <!-- Power LED -->
+  <circle cx="165" cy="140" r="5" fill="#ff4444" filter="url(#glow)"/>
+  <text x="100" y="180" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">GAME GEAR</text>
+</svg>

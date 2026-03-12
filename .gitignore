@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables — DO NOT COMMIT (contains API keys)
+.env
+.env.local
+.env.*.local
+
+# EmulatorJS data — 296MB, served from Cloudflare R2 instead
+public/emulatorjs/
+
+# Upload utility scripts — contain R2 credentials
+upload-bin.mjs
+upload-cue.mjs
+upload-emulatorjs.mjs
+
+# Editor / OS
+.DS_Store
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Wrangler
+.wrangler/

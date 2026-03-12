@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <!-- Keyboard computer body -->
+  <rect x="10" y="65" width="180" height="85" rx="8" fill="#0a1628" stroke="#6ecbf5" stroke-width="2" filter="url(#glow)"/>
+  <!-- Screen/LED strip at top -->
+  <rect x="10" y="58" width="180" height="12" rx="4" fill="#0d1e36" stroke="#00d4ff" stroke-width="1.5" filter="url(#glow)"/>
+  <!-- Power LED -->
+  <circle cx="170" cy="64" r="5" fill="#00ff44" filter="url(#glow)"/>
+  <!-- C64 key layout rows -->
+  <!-- Row 1 -->
+  <rect x="18" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="34" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="50" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="66" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="82" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="98" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="114" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="130" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="146" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="162" y="80" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <!-- Row 2 - offset -->
+  <rect x="22" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="38" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="54" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="70" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="86" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="102" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="118" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="134" y="94" width="12" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <rect x="150" y="94" width="24" height="9" rx="1" fill="#050d1a" stroke="#6ecbf5" stroke-width="1"/>
+  <!-- Spacebar -->
+  <rect x="45" y="120" width="110" height="10" rx="3" fill="#050d1a" stroke="#00d4ff" stroke-width="1.5"/>
+  <!-- C= commodore logo key (distinctive!) -->
+  <rect x="18" y="120" width="22" height="10" rx="2" fill="#0d1e36" stroke="#6ecbf5" stroke-width="1.5"/>
+  <text x="29" y="128" text-anchor="middle" font-family="monospace" font-size="6" fill="#00d4ff">C=</text>
+  <text x="100" y="175" text-anchor="middle" font-family="monospace" font-size="11" fill="#6ecbf5" opacity="0.8">C64</text>
+</svg>

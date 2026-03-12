@@ -1,0 +1,103 @@
+/* ── Wave Background Container ── */
+.waveContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--ffx-deep) 0%,
+    #091b33 30%,
+    var(--ffx-ocean) 60%,
+    #0f3460 100%
+  );
+}
+
+/* ── Gradient overlay for depth ── */
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(110, 203, 245, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ── Wave layers ── */
+.waveLayer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 320px;
+  pointer-events: none;
+}
+
+.waveSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Bottom wave — slowest */
+.wave1 {
+  animation: wave-drift 12s linear infinite;
+  bottom: -10px;
+  opacity: 0.9;
+}
+
+/* Middle wave */
+.wave2 {
+  animation: wave-drift 8s linear infinite;
+  bottom: 0px;
+  opacity: 0.8;
+}
+
+/* Top wave — fastest */
+.wave3 {
+  animation: wave-drift 5s linear infinite;
+  bottom: 10px;
+  opacity: 0.7;
+}
+
+/* ── Floating particles (pyreflies / light motes) ── */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: var(--ffx-glow);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(30px);
+    opacity: 0;
+  }
+}
