@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>RetroWave Player</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,13 +38,16 @@
       EJS_biosUrl = params.get('bios');
     }
 
-    // Save state callback — send to parent window
+    // On mobile: wire the EmulatorJS "exit" action to go back to the app
+    const returnUrl = params.get('returnUrl');
+    if (returnUrl) {
+      EJS_ExitLink = returnUrl;
+    }
+
+    // Save state callback — send to parent window (desktop iframe) or ignore (mobile)
     EJS_onSaveState = function(state) {
       try {
-        window.parent.postMessage({
-          type: 'save-state',
-          data: state,
-        }, '*');
+        window.parent.postMessage({ type: 'save-state', data: state }, '*');
       } catch (e) {
         console.warn('Could not send save state to parent:', e);
       }
@@ -51,10 +56,7 @@
     // Game save update callback
     EJS_onSaveUpdate = function(save) {
       try {
-        window.parent.postMessage({
-          type: 'save-update',
-          data: save,
-        }, '*');
+        window.parent.postMessage({ type: 'save-update', data: save }, '*');
       } catch (e) {
         console.warn('Could not send save update to parent:', e);
       }
