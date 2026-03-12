@@ -27,6 +27,10 @@
     // EmulatorJS v4.2.3 hosted on Cloudflare R2
     EJS_pathtodata = 'https://pub-44598954bf774754af38263b7890873b.r2.dev/emulatorjs/';
 
+    // Disable IndexedDB caching — iOS Safari rejects large ROMs (>50MB quota)
+    // causing a retry loop and "repeated error". Load fresh from R2 each time.
+    EJS_disableDatabases = true;
+
     // Optional BIOS
     if (params.get('bios')) {
       EJS_biosUrl = params.get('bios');
