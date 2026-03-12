@@ -353,7 +353,7 @@ export const GAMES = {
     {
       id: 'spyro-the-dragon',
       title: 'Spyro the Dragon',
-      rom: `${R2_BASE}/roms/ps1/spyro-the-dragon.bin`,
+      rom: `${R2_BASE}/roms/ps1/spyro-the-dragon.chd`,
       cover: `${R2_BASE}/covers/ps1/spyro-the-dragon.jpg`,
       year: 1998,
       genre: 'Platformer',
