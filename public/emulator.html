@@ -2,35 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>RetroWave Player</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; overflow: hidden; }
-    #game { width: 100vw; height: 100vh; }
+    html, body { background: #000; overflow: hidden; width: 100%; height: 100%; }
+    /* Use dvh (dynamic viewport height) so iOS Safari address bar doesn't cause overflow */
+    #game { width: 100vw; height: 100vh; height: 100dvh; }
+
+    /* Tap-to-start overlay — needed on iOS to unlock AudioContext */
+    #tap-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #tap-overlay .play-icon {
+      width: 80px;
+      height: 80px;
+      border: 3px solid rgba(110, 203, 245, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #tap-overlay .play-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: rgba(110, 203, 245, 0.9);
+      margin-left: 4px;
+    }
+    #tap-overlay .tap-text {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    #tap-overlay .game-name {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    #tap-overlay.hidden { display: none; }
   </style>
 </head>
 <body>
+  <!-- Tap-to-start overlay (iOS needs user gesture for audio) -->
+  <div id="tap-overlay">
+    <div class="game-name" id="overlay-title"></div>
+    <div class="play-icon">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+    <div class="tap-text">Tap to Play</div>
+  </div>
+
   <div id="game"></div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // Show game name on overlay
+    const gameName = params.get('name') || 'Game';
+    document.getElementById('overlay-title').textContent = gameName;
 
     // EmulatorJS configuration
     EJS_player = '#game';
     EJS_core = params.get('core') || 'fceumm';
     EJS_gameUrl = params.get('rom') || '';
-    EJS_gameName = params.get('name') || 'Game';
+    EJS_gameName = gameName;
     EJS_color = '#1a4a7a';
-    EJS_startOnLoaded = true;
+
+    // Don't auto-start on mobile — wait for tap to unlock audio
+    EJS_startOnLoaded = !isMobile;
 
     // EmulatorJS v4.2.3 hosted on Cloudflare R2
     EJS_pathtodata = 'https://pub-44598954bf774754af38263b7890873b.r2.dev/emulatorjs/';
 
     // Disable IndexedDB caching — iOS Safari rejects large ROMs (>50MB quota)
-    // causing a retry loop and "repeated error". Load fresh from R2 each time.
     EJS_disableDatabases = true;
 
     // Optional BIOS
@@ -44,23 +105,41 @@
       EJS_ExitLink = returnUrl;
     }
 
-    // Save state callback — send to parent window (desktop iframe) or ignore (mobile)
+    // Save state callback — send to parent window (desktop iframe)
     EJS_onSaveState = function(state) {
       try {
         window.parent.postMessage({ type: 'save-state', data: state }, '*');
-      } catch (e) {
-        console.warn('Could not send save state to parent:', e);
-      }
+      } catch (e) {}
     };
 
-    // Game save update callback
     EJS_onSaveUpdate = function(save) {
       try {
         window.parent.postMessage({ type: 'save-update', data: save }, '*');
-      } catch (e) {
-        console.warn('Could not send save update to parent:', e);
-      }
+      } catch (e) {}
     };
+
+    // Handle tap-to-start overlay
+    if (isMobile) {
+      document.getElementById('tap-overlay').addEventListener('click', function() {
+        // This click event IS the user gesture — unlocks AudioContext
+        this.classList.add('hidden');
+
+        // Resume any suspended audio contexts
+        if (window.AudioContext || window.webkitAudioContext) {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          ctx.resume().then(() => ctx.close());
+        }
+
+        // Start the emulator (EJS_startOnLoaded was false on mobile)
+        // EmulatorJS exposes a play method after loading
+        if (window.EJS_emulator) {
+          window.EJS_emulator.play();
+        }
+      });
+    } else {
+      // Desktop: hide overlay immediately
+      document.getElementById('tap-overlay').classList.add('hidden');
+    }
   </script>
   <script src="https://pub-44598954bf774754af38263b7890873b.r2.dev/emulatorjs/loader.js"></script>
 </body>
