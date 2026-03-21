@@ -1,34 +1,37 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useSaveStates } from '../../hooks/useSaveStates';
 import styles from './EmulatorPlayer.module.css';
 
-// iOS Safari blocks WebGL rendering inside iframes — detect mobile to navigate directly
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+// Safe for SSR/test environments — guard with typeof
+const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 export default function EmulatorPlayer({ game, consoleData, onExit }) {
   const { user } = useAuth();
   const { uploadSave } = useSaveStates();
 
-  // Build emulator URL (shared between iframe and direct nav)
-  const params = new URLSearchParams({
-    core: consoleData.core,
-    rom: game.rom,
-    name: game.title,
-    returnUrl: window.location.href,
-  });
-  if (consoleData.bios) {
-    const R2_BASE = import.meta.env.VITE_R2_PUBLIC_URL || '';
-    params.set('bios', `${R2_BASE}/bios/${consoleData.bios}`);
-  }
-  const emulatorUrl = `/emulator.html?${params.toString()}`;
+  // Build emulator URL — memoize to avoid rebuilding on every render
+  const emulatorUrl = useMemo(() => {
+    const params = new URLSearchParams({
+      core: consoleData.core,
+      rom: game.rom,
+      name: game.title,
+      returnUrl: window.location.href,
+    });
+    if (consoleData.bios) {
+      const R2_BASE = import.meta.env.VITE_R2_PUBLIC_URL || '';
+      params.set('bios', `${R2_BASE}/bios/${consoleData.bios}`);
+    }
+    return `/emulator.html?${params.toString()}`;
+  }, [consoleData.core, consoleData.bios, game.rom, game.title]);
 
   // On mobile: navigate directly to emulator.html (avoids iOS WebGL-in-iframe block)
   useEffect(() => {
     if (isMobile) {
       window.location.href = emulatorUrl;
     }
-  }, [emulatorUrl]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Fire once on mount — URL is stable for the session
 
   // Listen for save state messages from iframe (desktop only)
   const handleMessage = useCallback(async (event) => {
@@ -45,12 +48,14 @@ export default function EmulatorPlayer({ game, consoleData, onExit }) {
   }, [user, consoleData.id, game.id, uploadSave]);
 
   useEffect(() => {
+    if (isMobile) return; // No iframe on mobile — no messages to listen for
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
   }, [handleMessage]);
 
-  // ESC to exit (desktop)
+  // ESC to exit (desktop only)
   useEffect(() => {
+    if (isMobile) return;
     const handleKey = (e) => { if (e.key === 'Escape') onExit(); };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
