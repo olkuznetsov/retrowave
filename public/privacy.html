@@ -16,6 +16,8 @@
     h1 { font-size: 1.6rem; margin-bottom: 0.2em; }
     h2 { font-size: 1.1rem; margin-top: 2em; }
     p  { margin: 0.6em 0; }
+    ul { margin: 0.6em 0; padding-left: 1.5em; }
+    li { margin: 0.3em 0; }
     a  { color: #0066cc; }
   </style>
 </head>
@@ -31,40 +33,105 @@
   <h1>Privacy Policy</h1>
   <p><strong>Last updated:</strong> May 2026</p>
   <p>
-    This policy applies to the <strong>animembient</strong> content publishing tool
-    (the "App"), which uploads ambient music videos to YouTube, TikTok, and Instagram
-    via official platform APIs.
+    This Privacy Policy explains how <strong>animembient</strong> (the "App") collects,
+    uses, and protects information when you connect your TikTok, YouTube, or Instagram
+    account to the App via official platform APIs.
   </p>
 
   <h2>1. Who we are</h2>
   <p>
-    Operated by Oleksandr Kuznetsov, Ukraine.
+    animembient is operated by Oleksandr Kuznetsov, Ukraine.<br>
     Contact: <a href="mailto:ytokuznetsov@gmail.com">ytokuznetsov@gmail.com</a>
   </p>
 
-  <h2>2. Data collected</h2>
+  <h2>2. Information we collect</h2>
+  <p>When you authorize the App via TikTok Login Kit, we receive the following data
+  from TikTok's API:</p>
+  <ul>
+    <li><strong>Open ID</strong> — a unique identifier for your TikTok account</li>
+    <li><strong>Display name</strong> — your public TikTok username</li>
+    <li><strong>Avatar URL</strong> — a link to your TikTok profile picture</li>
+  </ul>
+  <p>This data is accessed via the <code>user.info.basic</code> scope solely to verify
+  that you are the authorized account owner before uploading content.</p>
+  <p>The App does <strong>not</strong> collect, read, or store any of the following:</p>
+  <ul>
+    <li>Your TikTok followers, following list, or engagement data</li>
+    <li>Your TikTok messages or private content</li>
+    <li>Personal data of any TikTok user other than the authorized creator</li>
+    <li>Payment or financial information</li>
+  </ul>
+
+  <h2>3. How we use your information</h2>
+  <p>The information obtained from TikTok is used exclusively to:</p>
+  <ul>
+    <li>Authenticate you as the authorized creator before uploading video content</li>
+    <li>Upload video content to your TikTok account as a draft via the
+        Content Posting API (<code>video.upload</code> scope)</li>
+  </ul>
+  <p>Your data is never used for advertising, profiling, or any purpose other than
+  operating the upload feature you explicitly requested.</p>
+
+  <h2>4. Data storage and security</h2>
   <p>
-    The App does <strong>not</strong> collect, store, or process personal data of any
-    third party. It accesses only the authorized creator's TikTok, YouTube, and Instagram
-    accounts via official OAuth APIs to upload video content.
+    OAuth access tokens and the basic profile data listed in Section 2 are stored
+    locally on the creator's own machine in a configuration file. This data is
+    <strong>never</strong> transmitted to any server controlled by animembient,
+    and is <strong>never</strong> shared with third parties.
+  </p>
+  <p>
+    Access is protected by your operating system's file permissions. You are
+    responsible for securing your own machine.
   </p>
 
-  <h2>3. OAuth tokens</h2>
+  <h2>5. Data retention and deletion</h2>
   <p>
-    Authentication tokens are stored locally on the creator's machine and
-    are never shared with third parties.
+    Data is retained only as long as you choose to use the App. To delete all stored
+    data, simply remove the App's configuration files from your machine (the
+    <code>tiktok_token.json</code>, <code>youtube_token.json</code>, and
+    <code>instagram_token.json</code> files in the App directory). Revoking access
+    in your TikTok account settings (<strong>Settings → Security → Manage App
+    Permissions</strong>) will also immediately invalidate any stored tokens.
   </p>
 
-  <h2>4. Third-party platforms</h2>
+  <h2>6. Third-party platforms</h2>
   <p>
-    Videos are published to TikTok, YouTube, and Instagram. Each platform's own
-    privacy policy governs how they handle the uploaded content.
+    The App interacts with TikTok, YouTube, and Instagram via their official APIs.
+    Each platform's own privacy policy governs how they handle data on their side:
+  </p>
+  <ul>
+    <li><a href="https://www.tiktok.com/legal/page/row/privacy-policy/en" target="_blank" rel="noopener">TikTok Privacy Policy</a></li>
+    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google / YouTube Privacy Policy</a></li>
+    <li><a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">Instagram / Meta Privacy Policy</a></li>
+  </ul>
+
+  <h2>7. Children's privacy</h2>
+  <p>
+    The App is intended for use by content creators and is not directed at children
+    under the age of 13. We do not knowingly collect data from children under 13.
   </p>
 
-  <h2>5. Changes</h2>
+  <h2>8. Your rights</h2>
+  <p>As the sole user of this App, you have full control over your data. You may at
+  any time:</p>
+  <ul>
+    <li>Revoke the App's access to your TikTok account via TikTok's app permission settings</li>
+    <li>Delete all locally stored tokens and profile data by removing the App's config files</li>
+    <li>Contact us at <a href="mailto:ytokuznetsov@gmail.com">ytokuznetsov@gmail.com</a>
+        with any privacy-related questions or requests</li>
+  </ul>
+
+  <h2>9. Changes to this policy</h2>
   <p>
-    This policy may be updated occasionally. The latest version is always available
-    at this URL.
+    This policy may be updated occasionally to reflect changes in the App or
+    applicable law. The latest version is always available at this URL.
+    Continued use of the App after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <h2>10. Contact</h2>
+  <p>
+    Questions or concerns about this Privacy Policy:<br>
+    <a href="mailto:ytokuznetsov@gmail.com">ytokuznetsov@gmail.com</a>
   </p>
 </body>
 </html>
