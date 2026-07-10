@@ -10,19 +10,35 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { app } from '../firebase';
+import { getRoleForEmail, DEFAULT_ROLE } from '../data/roles';
 
 const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const ROLE_STORAGE_KEY = 'userRole';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState(() => {
+    const saved = localStorage.getItem(ROLE_STORAGE_KEY) || DEFAULT_ROLE;
+    window.userRole = saved; // available immediately for DAP tools
+    return saved;
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+
+      const resolvedRole = firebaseUser
+        ? getRoleForEmail(firebaseUser.email)
+        : DEFAULT_ROLE;
+
+      setRole(resolvedRole);
+      localStorage.setItem(ROLE_STORAGE_KEY, resolvedRole);
+      window.userRole = resolvedRole;
+
       setLoading(false);
     });
     return unsubscribe;
@@ -50,6 +66,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     user,
+    role,
     loading,
     login,
     register,

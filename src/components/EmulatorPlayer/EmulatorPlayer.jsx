@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useSaveStates } from '../../hooks/useSaveStates';
 import styles from './EmulatorPlayer.module.css';
@@ -9,6 +9,7 @@ const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i
 export default function EmulatorPlayer({ game, consoleData, onExit }) {
   const { user } = useAuth();
   const { uploadSave } = useSaveStates();
+  const [gamepadCount, setGamepadCount] = useState(0);
 
   // Build emulator URL — memoize to avoid rebuilding on every render
   const emulatorUrl = useMemo(() => {
@@ -61,6 +62,21 @@ export default function EmulatorPlayer({ game, consoleData, onExit }) {
     return () => window.removeEventListener('keydown', handleKey);
   }, [onExit]);
 
+  // Gamepad detection — shows indicator when controller is connected
+  useEffect(() => {
+    if (isMobile) return;
+    const countPads = () => Array.from(navigator.getGamepads()).filter(Boolean).length;
+    const onConnect = () => setGamepadCount(countPads());
+    const onDisconnect = () => setGamepadCount(countPads());
+    setGamepadCount(countPads());
+    window.addEventListener('gamepadconnected', onConnect);
+    window.addEventListener('gamepaddisconnected', onDisconnect);
+    return () => {
+      window.removeEventListener('gamepadconnected', onConnect);
+      window.removeEventListener('gamepaddisconnected', onDisconnect);
+    };
+  }, []);
+
   // Mobile: show loading state while redirecting
   if (isMobile) {
     return (
@@ -86,6 +102,13 @@ export default function EmulatorPlayer({ game, consoleData, onExit }) {
       <div className={styles.titleBar}>
         <span className={styles.gameName}>{game.title}</span>
         <span className={styles.consoleBadge}>{consoleData.shortName}</span>
+      </div>
+
+      <div className={`${styles.gamepadIndicator} ${gamepadCount > 0 ? styles.gamepadConnected : ''}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 6h10l2.4 7.2A2 2 0 0 1 17.5 16h-11a2 2 0 0 1-1.9-2.8L7 6zm5-4a2 2 0 0 1 2 2H10a2 2 0 0 1 2-2zM9 10v2H7v1h2v2h1v-2h2v-1h-2v-2H9zm7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+        <span>{gamepadCount > 0 ? `${gamepadCount} gamepad${gamepadCount > 1 ? 's' : ''} ready` : 'No gamepad — press a button to connect'}</span>
       </div>
 
       <iframe
