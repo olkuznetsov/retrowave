@@ -3,9 +3,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--nav-height));
   padding: var(--space-2xl) var(--space-lg);
   user-select: none;
+  /* Slide animation moves cards ±300px — keep that from widening the page */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .mainTitle {
@@ -231,16 +234,39 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+  .carousel {
+    padding: var(--space-xl) var(--space-md);
+  }
+
   .peekCard {
     display: none;
   }
 
   .track {
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
 
   .mainTitle {
     font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    margin-bottom: var(--space-xl);
+  }
+
+  .centerCard {
+    min-width: 0;
+  }
+
+  .consoleCard {
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-md);
+  }
+
+  .consoleImageWrap {
+    width: 140px;
+    height: 140px;
   }
 
   .consolePlaceholderLarge {
@@ -250,5 +276,29 @@
 
   .consoleName {
     font-size: 1.2rem;
+  }
+
+  .consolTitle {
+    font-size: 1.25rem;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .dots {
+    margin-top: var(--space-xl);
+  }
+}
+
+@media (max-width: 360px) {
+  .mainTitle {
+    font-size: 1.35rem;
   }
 }

@@ -17,7 +17,12 @@ export default function Navbar({ onLoginClick }) {
 
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const searchRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // Close mobile menu on navigation
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -35,6 +40,9 @@ export default function Navbar({ onLoginClick }) {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setOpen(false);
       }
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -42,7 +50,7 @@ export default function Navbar({ onLoginClick }) {
 
   // Close on ESC
   useEffect(() => {
-    const handler = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const handler = (e) => { if (e.key === 'Escape') { setOpen(false); setMenuOpen(false); } };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, []);
@@ -54,7 +62,7 @@ export default function Navbar({ onLoginClick }) {
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} ref={menuRef}>
       <div className={styles.inner}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
@@ -142,7 +150,61 @@ export default function Navbar({ onLoginClick }) {
             </button>
           )}
         </div>
+
+        {/* Mobile menu toggle */}
+        <button
+          className={styles.menuBtn}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
+
+      {/* Mobile menu panel */}
+      {menuOpen && (
+        <div className={styles.mobileMenu}>
+          <Link
+            to="/"
+            className={`${styles.mobileLink} ${location.pathname === '/' ? styles.active : ''}`}
+          >
+            Consoles
+          </Link>
+          {user && (
+            <Link
+              to="/profile"
+              className={`${styles.mobileLink} ${location.pathname === '/profile' ? styles.active : ''}`}
+            >
+              My Games
+            </Link>
+          )}
+          <div className={styles.mobileAuth}>
+            {user ? (
+              <>
+                <span className={styles.mobileUser}>
+                  {user.displayName || user.email?.split('@')[0]}
+                </span>
+                <button onClick={() => { logout(); setMenuOpen(false); }} className={styles.logoutBtn}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button onClick={() => { onLoginClick(); setMenuOpen(false); }} className={styles.loginBtn}>
+                Sign In
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

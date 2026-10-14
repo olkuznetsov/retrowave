@@ -54,4 +54,14 @@
   --transition-fast:   0.15s ease;
   --transition-normal: 0.3s ease;
   --transition-slow:   0.5s ease-in-out;
+
+  /* ── Layout ── */
+  --nav-height:     64px;
+}
+
+/* Navbar becomes two rows (logo + menu, then search) */
+@media (max-width: 900px) {
+  :root {
+    --nav-height: 104px;
+  }
 }

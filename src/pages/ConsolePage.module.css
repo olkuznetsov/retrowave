@@ -104,3 +104,36 @@
     max-height: 50vh;
   }
 }
+
+@media (max-width: 600px) {
+  .consolePage {
+    padding: var(--space-md);
+  }
+
+  .header {
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .backBtn {
+    padding: 8px 4px;
+  }
+
+  .consoleTitle {
+    font-size: 1.35rem;
+  }
+
+  .headerMeta {
+    flex-wrap: wrap;
+    column-gap: 6px;
+    row-gap: 0;
+  }
+
+  .leftPanel {
+    padding: var(--space-md);
+  }
+
+  .rightPanel {
+    padding: var(--space-lg) var(--space-md);
+  }
+}

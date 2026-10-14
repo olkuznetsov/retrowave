@@ -136,3 +136,29 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* Narrow desktop windows: keep title clear of the Exit button */
+@media (max-width: 700px) {
+  .titleBar {
+    left: var(--space-md);
+    transform: none;
+    max-width: calc(100% - 140px);
+  }
+
+  .gameName {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .gamepadIndicator {
+    max-width: calc(100% - 2 * var(--space-md));
+    white-space: nowrap;
+  }
+
+  .gamepadIndicator span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
