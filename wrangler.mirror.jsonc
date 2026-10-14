@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  // A mirror of the site on workers.dev — the very build the Pages deploy serves
+  // (`npm run deploy` publishes both). Ukrainian ISPs' DNS answers nothing for all of
+  // *.pages.dev (found Oct 2026); workers.dev resolves there.
+  // Named *.mirror.jsonc so `wrangler pages deploy` doesn't pick it up as Pages config.
+  "name": "retrowave",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": { "directory": "./dist", "not_found_handling": "single-page-application" }
+}

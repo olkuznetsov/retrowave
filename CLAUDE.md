@@ -1,6 +1,9 @@
 # RetroWave — CLAUDE.md
 
 Live: https://retrowave.pages.dev
+Mirror: https://retrowave.askuznetsov6996.workers.dev (Ukrainian ISPs block *.pages.dev DNS)
+
+**Every deploy goes to BOTH** — use `npm run deploy`, never deploy just one.
 
 ## Git — commit & push after every change (standing rule; don't wait to be asked)
 
@@ -107,9 +110,15 @@ npm run dev
 
 ## Deploy
 ```bash
-npm run build
-./node_modules/.bin/wrangler pages deploy dist --project-name retrowave
+npm run deploy          # build + Pages + Workers mirror
+npm run deploy:pages    # only Pages (dist must be built)
+npm run deploy:mirror   # only Workers mirror (wrangler.mirror.jsonc)
 ```
+- The mirror serves the same `dist` as Workers static assets with SPA fallback.
+- No `_redirects` file: Workers rejects `/* /index.html 200` as an infinite loop, and Pages
+  already falls back to index.html for SPAs when there's no 404.html.
+- Firebase Google sign-in on the mirror needs `retrowave.askuznetsov6996.workers.dev` in
+  Firebase Console → Authentication → Settings → Authorized domains.
 
 ## Known issues / future work
 - ROM library is small (sample games only) — needs expansion

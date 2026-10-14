@@ -2,7 +2,7 @@
 
 A retro gaming platform built with a Final Fantasy X / PS2-era aesthetic. Play classic games from 22 consoles directly in the browser.
 
-**Live:** [retrowave.pages.dev](https://retrowave.pages.dev)
+**Live:** [retrowave.pages.dev](https://retrowave.pages.dev) · mirror: [retrowave.askuznetsov6996.workers.dev](https://retrowave.askuznetsov6996.workers.dev)
 
 ## Features
 
@@ -55,6 +55,9 @@ VITE_R2_PUBLIC_URL=https://your-bucket.r2.dev
 ## Deploy
 
 ```bash
-npm run build
-./node_modules/.bin/wrangler pages deploy dist --project-name retrowave
+npm run deploy
 ```
+
+Builds once and publishes the same `dist` to Cloudflare Pages and to a Workers mirror at
+[retrowave.askuznetsov6996.workers.dev](https://retrowave.askuznetsov6996.workers.dev)
+(some Ukrainian ISPs block `*.pages.dev`).

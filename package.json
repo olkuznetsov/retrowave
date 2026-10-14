@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "vite build && npm run deploy:pages && npm run deploy:mirror",
+    "deploy:pages": "wrangler pages deploy dist --project-name retrowave --commit-dirty=true",
+    "deploy:mirror": "wrangler deploy --config wrangler.mirror.jsonc",
     "lint": "eslint .",
     "preview": "vite preview"
   },
