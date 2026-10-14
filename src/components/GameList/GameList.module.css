@@ -1,7 +1,10 @@
 .gameList {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* flex (not height: 100%) so the panel's max-height bounds the list
+     when panels stack vertically on narrow screens */
+  flex: 1;
+  min-height: 0;
   gap: var(--space-md);
 }
 
@@ -30,6 +33,7 @@
 
 .list {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
